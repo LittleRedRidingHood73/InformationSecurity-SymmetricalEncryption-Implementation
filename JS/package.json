@@ -1,0 +1,16 @@
+{
+  "name": "js-enc-cli",
+  "version": "1.0.0",
+  "description": "JS Encryption Implementation",
+  "main": "main.js",
+  "type": "commonjs",
+  "bin": {
+    "js-enc-cli": "main.js"
+  },
+  "scripts": {
+    "start": "node main.js --help"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PHP Symmetric Encryption Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h2 { margin-bottom: 10px; }
+    form { padding: 20px; border: 1px solid #ccc; border-radius: 10px; width: 400px; }
+    label { display: block; margin-top: 10px; }
+    input, select, textarea, button {
+      width: 100%; padding: 6px; margin-top: 4px;
+      border-radius: 5px; border: 1px solid #ccc;
+    }
+    textarea { height: 80px; }
+  </style>
+  <script>
+    function toggleInput() {
+      const type = document.getElementById('type').value;
+      document.getElementById('textInput').style.display = (type === 'text') ? 'block' : 'none';
+      document.getElementById('fileInput').style.display = (type === 'file') ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body>
+  <h2>🔐 PHP Symmetric Encryption Demo</h2>
+  <form method="POST" action="process.php" enctype="multipart/form-data">
+    <label>Algorithm:</label>
+    <select name="algo" required>
+      <option value="aes">AES</option>
+      <option value="des">DES</option>
+      <option value="rc4">RC4</option>
+    </select>
+
+    <label>Key:</label>
+    <input type="text" name="key" placeholder="Enter encryption key" required>
+
+    <label>IV (optional):</label>
+    <input type="text" name="iv" placeholder="AES=16 bytes, DES=8 bytes">
+
+    <label>Mode:</label>
+    <select name="action" required>
+      <option value="encrypt">Encrypt</option>
+      <option value="decrypt">Decrypt</option>
+    </select>
+
+    <label>Input Type:</label>
+    <select name="type" id="type" onchange="toggleInput()" required>
+      <option value="text">Text</option>
+      <option value="file">File</option>
+    </select>
+
+    <div id="textInput">
+      <label>Text:</label>
+      <textarea name="text" placeholder="Enter text to process..."></textarea>
+    </div>
+
+    <div id="fileInput" style="display:none;">
+      <label>File:</label>
+      <input type="file" name="file">
+    </div>
+
+    <button type="submit">Process</button>
+  </form>
+</body>
+</html>
